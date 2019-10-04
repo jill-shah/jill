@@ -1,0 +1,71 @@
+#1A
+#a
+image = imread("el-capitan.png")
+show_image = imshow(image)
+size_image = size(image)
+
+#b
+function function_string(string)
+    new_image = imread(string)
+    imshow(new_image)
+    R = new_image[:, :, 1]
+    G = new_image[:, :, 2]
+    B = new_image[:, :, 3]
+    return(R,B,G)
+end
+
+#c
+function function_string(string)
+    new_image = imread(string)
+    imshow(new_image)
+    R = new_image[:, :, 1]
+    G = new_image[:, :, 2]
+    B = new_image[:, :, 3]
+    println("BUG BUG BUG")
+end
+
+#d
+function function_string(string)
+    new_image = imread(string)
+    imshow(new_image)
+    R = new_image[:, :, 1]
+    G = new_image[:, :, 2]
+    B = new_image[:, :, 3]
+    println("Reset with git reset --mixed")
+end
+
+#e
+image2 = zeros(360,640,3)
+
+image2[:,:,1] = image[:, :, 2]
+image2[:,:,2] = image[:, :, 3]
+image2[:,:,3] = image[:, :, 1]
+figure(figsize=[5,5])
+subplot(1,2,1); imshow(image); title("El-Capitans Original"); axis("off")
+subplot(1,2,2); imshow(image2); title("El-Capitans Changed"); axis("off")
+
+
+
+#B
+function circular_rotation(picture, shift)
+    picture = imread(picture)
+    red = picture[:,:,1]
+    shifted_image = circshift(red, (shift,0))
+    return imshow(shifted_image)
+end
+rotated_image = circular_rotation("el-capitan.png", 180)
+figure(figsize=[5,5])
+subplot(1,2,1); imshow(image); title("El-Capitans Original"); axis("off")
+subplot(1,2,2); imshow(shifted_image); title("El-Capitans Changed2"); axis("off")
+
+
+
+##function
+function rotate_picture(images, pixels)
+    images = imread(images)
+    red = images[:,:,1]
+    new_imges = zeros(360, 640)
+    new_imges[1:end-pixels,:] = red[pixels + 1:end,:]
+    new_imges[end - pixels + 1:end,:] = red[1:pixels,:]
+    return imshow(new_imges)
+end
