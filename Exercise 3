@@ -14,6 +14,9 @@ function function_string(string)
     return(R,B,G)
 end
 
+println("BUG BUG BUG")
+
+
 #c
 function function_string(string)
     new_image = imread(string)
