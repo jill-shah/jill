@@ -13,3 +13,27 @@ function function_string(string)
     B = new_image[:, :, 3]
     return(R,B,G)
 end
+
+#e
+
+image2 = zeros(360,640,3)
+
+image2[:,:,1] = image[:, :, 2]
+image2[:,:,2] = image[:, :, 3]
+image2[:,:,3] = image[:, :, 1]
+figure(figsize=[5,5])
+subplot(1,2,1); imshow(image); title("El-Capitans Original"); axis("off")
+subplot(1,2,2); imshow(image2); title("El-Capitans Changed"); axis("off")
+
+
+#B
+function circular_rotation(picture, shift)
+    picture = imread(picture)
+    red = picture[:,:,1]
+    shifted_image = circshift(red, (shift,0))
+    return shifted_image
+end
+rotated_image = circular_rotation("el-capitan.png", 180)
+figure(figsize=[5,5])
+subplot(1,2,1); imshow(image); title("El-Capitans Original"); axis("off")
+subplot(1,2,2); imshow(rotated_image); title("El-Capitans Changed2"); axis("off")
